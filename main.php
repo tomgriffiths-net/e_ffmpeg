@@ -8,7 +8,7 @@ class e_ffmpeg{
             }
         }
     }
-    public static function path($name = "ffmpeg"):string|bool{
+    public static function path(string $name = "ffmpeg"):string|bool{
         if($name === "ffmpeg" || $name === "ffprobe" || $name === "ffplay"){
             $fileName = getcwd() . "\\ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin\\" . $name . ".exe";
             if(is_file($fileName)){
@@ -17,10 +17,37 @@ class e_ffmpeg{
         }
         return false;
     }
-    public static function download(){
-        downloader::downloadFile("https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip","ffmpeg/ffmpeg-master-latest-win64-gpl.zip");
-        shell_exec('powershell -command "Expand-Archive -Path ffmpeg\\ffmpeg-master-latest-win64-gpl.zip -DestinationPath ffmpeg -Force"');
+    public static function download():bool{
+        $file = "ffmpeg/ffmpeg-master-latest-win64-gpl.zip";
+        if(!downloader::downloadFile("https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip",$file)){
+            echo "Failed to download ffmpeg zip file\n";
+            return false;
+        }
+
+        echo "Unzipping ffmpeg zip...\n";
+        $zip = new ZipArchive;
+        $result = $zip->open($file);
+
+        if($result !== true){
+            echo "Failed to open downloaded zip file\n";
+            return false;
+        }
+
+        if(!$zip->extractTo('ffmpeg')){
+            echo "Failed to unzip ffmpeg\n";
+            return false;
+        }
+
+        $zip->close();
         unlink("ffmpeg\\ffmpeg-master-latest-win64-gpl.zip");
-        mklog('general','Ffmpeg downloaded',false);
+
+        if(!is_string(self::path())){
+            echo "Failed to locate ffmpeg.exe\n";
+            return false;
+        }
+        
+        mklog(1,'Ffmpeg downloaded');
+        
+        return true;
     }
 }
