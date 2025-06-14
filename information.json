@@ -1,8 +1,8 @@
 {
-    "dependencies": [],
     "id_name": "e_ffmpeg",
-    "version": 2,
+    "name": "Ffmpeg Downloader (Dev)",
+    "version": 4,
     "author": "tom",
-    "name": "Ffmpeg Downloader",
-    "description": ""
+    "description": "",
+    "dependencies": []
 }

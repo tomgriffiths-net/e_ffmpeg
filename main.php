@@ -9,7 +9,7 @@ class e_ffmpeg{
         }
     }
     public static function path($name = "ffmpeg"):string|bool{
-        if($name === "ffmpeg" || $name === "ffprobe"){
+        if($name === "ffmpeg" || $name === "ffprobe" || $name === "ffplay"){
             $fileName = getcwd() . "\\ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin\\" . $name . ".exe";
             if(is_file($fileName)){
                 return $fileName;
