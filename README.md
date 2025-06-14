@@ -5,6 +5,6 @@ e_ffmpeg is a PHP-CLI package that provides functionality to download the popula
 
 - **init**: Asks the user if they want to download ffmpeg if they have not got it installed.
 
-- **download():bool**: Downloads ffmpeg, returns true on success and false on failure.
+- **download():bool**: Downloads ffmpeg from the BtbN/FFmpeg-Builds github page, returns true on success and false on failure.
 
 - **path(string $name="ffmpeg"):string|bool**: Returns the absolute path to the ffmpeg, ffprobe, or ffplay executable depending on the $name. Returns false on failure.
