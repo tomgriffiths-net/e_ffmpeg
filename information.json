@@ -4,5 +4,7 @@
     "version": 5,
     "author": "tom",
     "description": "",
-    "dependencies": []
+    "dependencies": {
+        "e_7zip": 1
+    }
 }
