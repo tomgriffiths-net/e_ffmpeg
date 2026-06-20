@@ -30,7 +30,7 @@ class e_ffmpeg{
         }
 
         $base = str_replace('\\', '/', self::baseDir());
-        $hits = glob($base . '/*/bin/ffmpeg.exe');
+        $hits = glob("$base/*/bin/$exe.exe");
 
         if(!is_array($hits) || empty($hits)){
             return null;

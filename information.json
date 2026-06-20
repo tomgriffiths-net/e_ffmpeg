@@ -1,7 +1,7 @@
 {
     "id_name": "e_ffmpeg",
     "name": "Ffmpeg Downloader (Dev)",
-    "version": 5,
+    "version": 6,
     "author": "tom",
     "description": "",
     "dependencies": {
